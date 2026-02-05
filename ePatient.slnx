@@ -1,0 +1,9 @@
+<Solution>
+  <Project Path="ePatient.Application.Tests/ePatient.Application.Tests.csproj" Id="a4c3e349-6dbc-42fa-a5e7-391361b76d25" />
+  <Project Path="ePatient.Domain.Tests/ePatient.Domain.Tests.csproj" Id="ade2cf1b-67df-4f27-9d4f-c53e61e5af40" />
+  <Project Path="ePatient.Api/ePatient.Api.csproj" />
+  <Project Path="ePatient.Application/ePatient.Application.csproj" />
+  <Project Path="ePatient.Domain/ePatient.Domain.csproj" />
+  <Project Path="ePatient.Infrastructure/ePatient.Infrastructure.csproj" />
+  <Project Path="ePatient.Tests.Architecture/ePatient.Tests.Architecture.csproj" />
+</Solution>
