@@ -34,7 +34,7 @@ public class GetPatientByIdQueryValidatorTests
     /// Verifies that <see cref="GetPatientByIdQueryValidator"/> passes validation when patient ID is zero.
     /// </summary>
     [Fact]
-    public async Task Validate_Should_Pass_WhenPatientIdIsZero()
+    public async Task Validate_Should_Fail_WhenPatientIdIsZero()
     {
         // Arrange
         var query = new GetPatientByIdQuery("0");
@@ -43,7 +43,7 @@ public class GetPatientByIdQueryValidatorTests
         var result = await validator.TestValidateAsync(query, cancellationToken: TestContext.Current.CancellationToken);
 
         // Assert
-        result.ShouldNotHaveAnyValidationErrors();
+        result.ShouldHaveValidationErrorFor(q => q.PatientId);
     }
 
     /// <summary>
