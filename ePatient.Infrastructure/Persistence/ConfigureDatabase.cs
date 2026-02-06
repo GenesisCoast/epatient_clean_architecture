@@ -17,7 +17,7 @@ public static class ConfigureDatabase
     /// </summary>
     /// <param name="services">Services to add dependencies to.</param>
     /// <returns>The service collection.</returns>
-    public static IServiceCollection ConfigureDatabaseServices(this IServiceCollection services)
+    public static IServiceCollection AddDatabaseServices(this IServiceCollection services)
     {
         services.AddDbContext<IUnitOfWork, ApplicationDbContext>(
             options => options.UseInMemoryDatabase("PatientLookupDb"));

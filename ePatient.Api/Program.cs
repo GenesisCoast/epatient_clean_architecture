@@ -4,7 +4,7 @@ using ePatient.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.ConfigureDatabaseServices();
+builder.Services.AddDatabaseServices();
 builder.Services.AddValidationServices();
 builder.Services.AddMediatRServices();
 builder.Services.AddEndpoints();
