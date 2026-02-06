@@ -10,15 +10,29 @@ namespace ePatient.Application.Patients;
 /// Request to get a patient by an ID.
 /// </summary>
 /// <param name="PatientId">The patient ID.</param>
-public record GetPatientByIdQuery(string? PatientId) : IRequest<Result<Patient>>;
+public record GetPatientByIdQuery(string? PatientId) : IRequest<Result<GetPatientByIdQueryResponse>>;
+
+/// <summary>
+/// Request to get a patient by an ID.
+/// </summary>
+/// <param name="PatientId">The patient ID.</param>
+public record GetPatientByIdQueryResponse(
+    int? Id,
+    string? FirstName,
+    string? LastName,
+    DateTime? DateOfBirth,
+    string? MedicalRecordNumber,
+    string? Email = null,
+    string? PhoneNumber = null
+);
 
 /// <summary>
 /// Handler for <see cref="GetPatientByIdQuery"/>.
 /// </summary>
-public class GetPatientByIdHandler(IUnitOfWork UnitOfWork) : IRequestHandler<GetPatientByIdQuery, Result<Patient>>
+public class GetPatientByIdHandler(IUnitOfWork UnitOfWork) : IRequestHandler<GetPatientByIdQuery, Result<GetPatientByIdQueryResponse>>
 {
     /// <inheritdoc/>
-    public async Task<Result<Patient>> Handle(
+    public async Task<Result<GetPatientByIdQueryResponse>> Handle(
         GetPatientByIdQuery query,
         CancellationToken cancellationToken
     )
@@ -31,8 +45,16 @@ public class GetPatientByIdHandler(IUnitOfWork UnitOfWork) : IRequestHandler<Get
 
         var result = await repository.FirstOrDefaultAsync(specification, cancellationToken);
 
-        return result is not null
-            ? Result<Patient>.Success(result)
-            : Result<Patient>.NotFound();
+        return result is null
+            ? Result<GetPatientByIdQueryResponse>.NotFound()
+            : Result<GetPatientByIdQueryResponse>.Success(new GetPatientByIdQueryResponse(
+                result.Id,
+                result.FirstName,
+                result.LastName,
+                result.DateOfBirth,
+                result.MedicalRecordNumber,
+                result.Email,
+                result.PhoneNumber
+            ));
     }
 }

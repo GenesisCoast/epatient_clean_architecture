@@ -45,7 +45,12 @@ public class GetPatientByIdHandlerTests
 
         // Assert
         Assert.True(result.IsSuccess);
-        Assert.Equal(expectedPatient, result.Value);
+        Assert.Equal(expectedPatient.Id, result.Value.Id);
+        Assert.Equal(expectedPatient.FirstName, result.Value.FirstName);
+        Assert.Equal(expectedPatient.LastName, result.Value.LastName);
+        Assert.Equal(expectedPatient.MedicalRecordNumber, result.Value.MedicalRecordNumber);
+        Assert.Equal(expectedPatient.PhoneNumber, result.Value.PhoneNumber);
+        Assert.Equal(expectedPatient.Email, result.Value.Email);
     }
 
     /// <summary>

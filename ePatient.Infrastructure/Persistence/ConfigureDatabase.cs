@@ -35,10 +35,11 @@ public static class ConfigureDatabase
         var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
         db.Database.EnsureCreated();
-        db.Database.Migrate();
+        //db.Database.Migrate();
 
         var faker = new PatientGenerator();
-        db.Patients.AddRange(faker.GenerateBetween(3, 5));
+        var patients = faker.GenerateBetween(3, 5).ToList();
+        db.Patients.AddRange(patients);
         db.SaveChanges();
     }
 }

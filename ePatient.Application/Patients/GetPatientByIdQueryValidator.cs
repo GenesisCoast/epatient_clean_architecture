@@ -13,6 +13,6 @@ public class GetPatientByIdQueryValidator : AbstractValidator<GetPatientByIdQuer
         RuleFor(r => r.PatientId)
             .NotNull()
             .NotEmpty()
-            .Must(id => int.TryParse(id, out int val) && val >= 0).WithMessage("{PropertyName} must be a valid positive number.");
+            .Must(id => int.TryParse(id, out int val) && val > 0).WithMessage("{PropertyName} must be a valid positive number.");
     }
 }

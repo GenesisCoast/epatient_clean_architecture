@@ -25,8 +25,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Patient.Application\ePatient.Application.csproj" />
-    <ProjectReference Include="..\Patient.Infrastructure\ePatient.Infrastructure.csproj" />
+    <ProjectReference Include="..\ePatient.Application\ePatient.Application.csproj" />
+    <ProjectReference Include="..\ePatient.Infrastructure\ePatient.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
